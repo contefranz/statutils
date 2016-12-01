@@ -1,0 +1,20 @@
+Package: statutils
+Type: Package
+Title: statutils: a collection of statistical utilities regarding both modelling, 
+data management and wrangling.
+Version: 1.0
+Date: 2016-12-01
+Authors@R: person("Francesco", "Grossetti",
+    email = "francesco.grossetti@gmail.com",
+    role = c("aut", "cre"))
+Description: A collection of statistical utilities regarding both modelling, 
+data management and wrangling to facilitate the workflow when developing R code.
+URL: https://github.com/contefranz/statutils
+BugReports: https://github.com/contefranz/statutils/issues
+License: GPL-3
+LazyData: TRUE
+RoxygenNote: 5.0.1
+Depends: R (>= 3.0)
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
