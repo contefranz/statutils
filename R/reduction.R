@@ -1,4 +1,4 @@
-#' Reduce a linear model by iteratively checking the signficance of each predictor
+#' Reduce a linear model by iteratively checking the signficance of each predictor.
 #'
 #' The procedure takes a linear model of class \code{lm} (including the output from
 #' a stepwise procedure) and reduces it by iteratively deleting predictors 

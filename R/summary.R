@@ -1,4 +1,4 @@
-#' Summary method for \code{\link{reduction}}
+#' Summary method for \code{\link{reduction}}.
 #'
 #' This function adds a method for \code{\link[base]{summary}} when the object is a list.
 #' In particular, here the list corresponds to a bunch of information computed

@@ -3,7 +3,7 @@
 \name{summary}
 \alias{summary}
 \alias{summary.list}
-\title{Summary method for \code{\link{reduction}}}
+\title{Summary method for \code{\link{reduction}}.}
 \usage{
 summary(model, ...)
 

@@ -3,7 +3,7 @@
 \name{reduction}
 \alias{reduction}
 \alias{reduction.lm}
-\title{Reduce a linear model by iteratively checking the signficance of each predictor}
+\title{Reduce a linear model by iteratively checking the signficance of each predictor.}
 \usage{
 reduction(model, ...)
 
