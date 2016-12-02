@@ -1,12 +1,15 @@
-# statutils
+---
+# statutils v1.0
 
-**statutils** is a collection of statistical utilities regarding both modelling, 
-data management and wrangling. The current stable version is 1.0. Below is a list
+**statutils** is a collection of utilities regarding both modelling, 
+data management and wrangling. Below is a list
 of the current available functions grouped by topic/usage. 
 
-## Linear Models
+### Linear Models
 
-Here you can find two functions: `asd`
+Here you can find two functions: 
 
-A collection of statistical utilities regarding both modelling, 
-data management and wrangling to facilitate the workflow when developing R code.
+* `reduction()`: a procedure to iteratively reduce a linear model by selecting 
+predictors according to a given significance threshold. 
+
+* `summary()`: the related method to print results out of `reduction()`.

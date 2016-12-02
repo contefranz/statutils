@@ -3,7 +3,7 @@
 \name{summary}
 \alias{summary}
 \alias{summary.list}
-\title{Summary method for \code{reduction}}
+\title{Summary method for \code{\link{reduction}}}
 \usage{
 summary(model, ...)
 
@@ -16,9 +16,9 @@ summary(model, ...)
 Bla bla
 }
 \description{
-This function adds a method for \code{summary} when the object is a list.
+This function adds a method for \code{\link[base]{summary}} when the object is a list.
 In particular, here the list corresponds to a bunch of information computed
-through \code{lm.fit}.
+through \code{\link[stats]{lm.fit}}.
 }
 \details{
 Bla bla
