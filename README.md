@@ -6,4 +6,7 @@ of the current available functions grouped by topic/usage.
 
 ## Linear Models
 
-Here you can find two functions: ``
+Here you can find two functions: `asd`
+
+A collection of statistical utilities regarding both modelling, 
+data management and wrangling to facilitate the workflow when developing R code.

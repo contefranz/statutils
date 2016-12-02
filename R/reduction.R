@@ -1,32 +1,68 @@
-# OLS REDUCTION PROCEDURE -------------------------------------------------
-# Author: Francesco Grossetti
-# email: francesco.grossetti@gmail.com
-# version: 1.0
-# date: 12/01/2016
-# DESCRIPTION
-# The procedure takes a linear model of class "lm" (including the output from
-# a stepwise procedure) and reduces it by iteratively deleting predictors 
-# based on pvalues of the t-tests. In particular, conversely to what the 
-# function stats::lm() currently does, it allows the inclusion of high order
-# effects. For instance, it can fit just interaction terms given by 
-# x1*x2 or x1:x2 passed with the usual R notation.
-# 
-# 
+#' Reduce a linear model by iteratively checking the signficance of each predictor
+#'
+#' The procedure takes a linear model of class \code{lm} (including the output from
+#' a stepwise procedure) and reduces it by iteratively deleting predictors 
+#' based on pvalues of the t-tests. In particular, conversely to what the 
+#' function \code{\link[stats]{lm}} currently does, it allows the inclusion of just 
+#' high order effects. For instance, it can fit just interaction terms given by 
+#' x1*x2 or x1:x2 passed with the usual \code{R} notation.
+#'
+#' @param model An object of class \code{lm}.
+#' @param data A \code{data.frame} or \code{data.table} on which \code{model} has run.
+#' @param alpha The significance level at which cut off predictors. Default is 5\%.
+#' @param intercept Specify whether the reduction procedure has to consider an 
+#' intercept or not. Default is \code{TRUE}.
+#' 
+#' @details The procedure makes use of the workhorse function of \code{lm}: 
+#' \code{lm.fit}. This allows to explicitly specify the design matrix which enables
+#' to split main effects from interactions. 
+#' 
+#' @return A list with the following elements:\cr
+#' \enumerate{
+#' \item \code{coef}: a matrix of estimated coefficients, standard errors, t-value and
+#' the relative p-values
+#' \item \code{sigma}: the residual standard error and the associated degrees of freedom
+#' \item \code{r.squared}: the R^2 of the model
+#' \item \code{adj.r.squared}: the adjusted R^2 of the model
+#' \item \code{fstatistic}: the F-statistic of the model and the associated degrees of freedom
+#' \item \code{rdf}: the explicit value of the degrees of freedom of the model.
+#' }
+#' 
+#' @examples
+#' data_factor = mtcars
+#' data_factor$am = as.factor( data_factor$am )
+#' levels( data_factor$am ) = c( "no", "yes" )
+#' 
+#' complete_model = lm( hp ~ qsec + cyl + mpg + disp + drat + wt + qsec + vs +
+#'                      am + gear + carb + am:qsec, data = data_factor )
+#' summary( complete_model )
+#' 
+#' reduced_model = reduction( complete_model, data = data_factors )
+#' summary( reduced_model )
+#' 
+#' @seealso \code{\link[stats]{lm.fit}} \code{\link[stats]{lm}} \code{\link[stats]{step}}
+#' @author Francesco Grossetti \email{francesco.grossetti@@gmail.com}.
+#' @export
 
 reduction = function( model, ... ) {
   UseMethod( "reduction", model )
 }
+
+#' @rdname reduction
+#' @aliases reduction
+#' 
+#' @importFrom stats lm.fit
 
 reduction.lm = function( model, data, alpha = 0.05, intercept = TRUE ) {
   
   compute_pval_max = function( obj ) {
     z = obj
     r = z$residuals
-    n = length(r)
+    n = length( r )
     rss = sum( r^2 )
     rdf = z$df.residual
-    resvar = rss/rdf
-    sigma = sqrt(resvar)
+    resvar = rss / rdf
+    sigma = sqrt( resvar )
     Qr = z$qr
     p = z$rank
     p1 = 1L:p
@@ -60,7 +96,8 @@ reduction.lm = function( model, data, alpha = 0.05, intercept = TRUE ) {
     digits = 5
     z = obj
     r = z$residuals
-    n = length(r)
+    n = length( r )
+    p = z$rank
     rss = sum( r^2 )
     rdf = z$df.residual
     resvar = rss / rdf
