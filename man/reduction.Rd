@@ -21,15 +21,13 @@ intercept or not. Default is \code{TRUE}.}
 }
 \value{
 A list with the following elements:\cr
-\enumerate{
-\item \code{coef}: a matrix of estimated coefficients, standard errors, t-value and
-the relative p-values
-\item \code{sigma}: the residual standard error and the associated degrees of freedom
-\item \code{r.squared}: the R^2 of the model
-\item \code{adj.r.squared}: the adjusted R^2 of the model
-\item \code{fstatistic}: the F-statistic of the model and the associated degrees of freedom
-\item \code{rdf}: the explicit value of the degrees of freedom of the model.
-}
+\item{\code{coef}}{a matrix of estimated coefficients, standard errors, t-value and
+the relative p-values.}
+\item{\code{sigma}}{the residual standard error and the associated degrees of freedom.}
+\item{\code{r.squared}}{the R^2 of the model.}
+\item{\code{adj.r.squared}}{the adjusted R^2 of the model.}
+\item{\code{fstatistic}}{the F-statistic of the model and the associated degrees of freedom.}
+\item{\code{rdf}}{the explicit value of the degrees of freedom of the model.}
 }
 \description{
 The procedure takes a linear model of class \code{lm} (including the output from

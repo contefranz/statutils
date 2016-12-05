@@ -18,15 +18,13 @@
 #' to split main effects from interactions. 
 #' 
 #' @return A list with the following elements:\cr
-#' \enumerate{
-#' \item \code{coef}: a matrix of estimated coefficients, standard errors, t-value and
-#' the relative p-values
-#' \item \code{sigma}: the residual standard error and the associated degrees of freedom
-#' \item \code{r.squared}: the R^2 of the model
-#' \item \code{adj.r.squared}: the adjusted R^2 of the model
-#' \item \code{fstatistic}: the F-statistic of the model and the associated degrees of freedom
-#' \item \code{rdf}: the explicit value of the degrees of freedom of the model.
-#' }
+#' \item{\code{coef}}{a matrix of estimated coefficients, standard errors, t-value and
+#' the relative p-values.}
+#' \item{\code{sigma}}{the residual standard error and the associated degrees of freedom.}
+#' \item{\code{r.squared}}{the R^2 of the model.}
+#' \item{\code{adj.r.squared}}{the adjusted R^2 of the model.}
+#' \item{\code{fstatistic}}{the F-statistic of the model and the associated degrees of freedom.}
+#' \item{\code{rdf}}{the explicit value of the degrees of freedom of the model.}
 #' 
 #' @examples
 #' data_factor = mtcars
@@ -103,6 +101,9 @@ reduction.lm = function( model, data, alpha = 0.05, intercept = TRUE ) {
     resvar = rss / rdf
     sigma = sqrt( resvar )
     f = z$fitted.values
+    Qr = z$qr
+    p1 = 1L:p
+    R = chol2inv( Qr$qr[ p1, p1, drop = FALSE ] )
     if( any( names( z$coefficients ) %in% "(Intercept)" ) ) {
       mss = sum( ( f - mean( f ) )^2 ) 
       df.int = 1L
@@ -115,10 +116,6 @@ reduction.lm = function( model, data, alpha = 0.05, intercept = TRUE ) {
     fstatistic = c( value = ( mss / ( p - df.int ) ) / resvar, 
                     numdf = p - df.int, 
                     dendf = rdf )
-    Qr = z$qr
-    p = z$rank
-    p1 = 1L:p
-    R = chol2inv( Qr$qr[ p1, p1, drop = FALSE ] )
     se = sqrt( diag( R ) * resvar )
     est = z$coefficients[ Qr$pivot[ p1 ] ]
     tval = est/se
@@ -127,7 +124,8 @@ reduction.lm = function( model, data, alpha = 0.05, intercept = TRUE ) {
     lm.results = cbind( est, se, tval, pval )
     colnames( lm.results ) = c( "Estimate", "Std. Error", "t value", "Pr(>|t|)" ) 
     
-    return( invisible( list( coef = lm.results, sigma = sigma, 
+    return( invisible( list( coef = lm.results, residuals = r, 
+                             fitted.values = f, sigma = sigma, 
                              r.squared = r.squared, 
                              adj.r.squared = adj.r.squared, 
                              fstatistic = fstatistic,
