@@ -28,9 +28,6 @@
 #' @author Francesco Grossetti \email{francesco.grossetti@@gmail.com}.
 #' @export
 
-#' @rdname summary
-#' @aliases summary
-
 summary.list = function( model, digits = NULL ) {
   
   if ( is.null( digits ) ) {
