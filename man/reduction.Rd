@@ -7,7 +7,7 @@
 \usage{
 reduction(model, ...)
 
-\method{reduction}{lm}(model, data, alpha = 0.05, intercept = TRUE)
+\method{reduction}{lm}(model, data, alpha, intercept = TRUE)
 }
 \arguments{
 \item{model}{An object of class \code{lm}.}
