@@ -50,6 +50,8 @@ reduction = function( model, ... ) {
 #' @aliases reduction
 #' 
 #' @importFrom stats lm.fit
+#' 
+#' @export
 
 reduction.lm = function( model, data, alpha = 0.05, intercept = TRUE ) {
   
