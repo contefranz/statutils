@@ -26,12 +26,12 @@
 #' @author Francesco Grossetti \email{francesco.grossetti@@gmail.com}.
 #' @export
 
-summary = function( model, ... ) {
-  UseMethod( "summary", model )
-}
-
-#' @rdname summary
-#' @aliases summary
+# summary = function( model, ... ) {
+#   UseMethod( "summary", model )
+# }
+# 
+# #' @rdname summary
+# #' @aliases summary
 
 summary.list = function( model, digits = NULL ) {
   
