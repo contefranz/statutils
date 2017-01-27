@@ -1,4 +1,4 @@
-#' Reduce a linear model by iteratively checking the signficance of each predictor.
+#' Reduce a linear model by iteratively checking the signficance of each predictor
 #'
 #' The procedure takes a linear model of class \code{lm} (including the output from
 #' a stepwise procedure) and reduces it by iteratively deleting predictors 
@@ -21,8 +21,8 @@
 #' \item{\code{coef}}{a matrix of estimated coefficients, standard errors, t-value and
 #' the relative p-values.}
 #' \item{\code{sigma}}{the residual standard error and the associated degrees of freedom.}
-#' \item{\code{r.squared}}{the R^2 of the model.}
-#' \item{\code{adj.r.squared}}{the adjusted R^2 of the model.}
+#' \item{\code{r.squared}}{the \eqn{R^2} of the model.}
+#' \item{\code{adj.r.squared}}{the adjusted \eqn{R^2} of the model.}
 #' \item{\code{fstatistic}}{the F-statistic of the model and the associated degrees of freedom.}
 #' \item{\code{rdf}}{the explicit value of the degrees of freedom of the model.}
 #' 

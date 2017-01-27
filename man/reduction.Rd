@@ -3,11 +3,11 @@
 \name{reduction}
 \alias{reduction}
 \alias{reduction.lm}
-\title{Reduce a linear model by iteratively checking the signficance of each predictor.}
+\title{Reduce a linear model by iteratively checking the signficance of each predictor}
 \usage{
 reduction(model, ...)
 
-\method{reduction}{lm}(model, data, alpha, intercept = TRUE)
+\method{reduction}{lm}(model, data, alpha = 0.05, intercept = TRUE)
 }
 \arguments{
 \item{model}{An object of class \code{lm}.}
@@ -24,8 +24,8 @@ A list with the following elements:\cr
 \item{\code{coef}}{a matrix of estimated coefficients, standard errors, t-value and
 the relative p-values.}
 \item{\code{sigma}}{the residual standard error and the associated degrees of freedom.}
-\item{\code{r.squared}}{the R^2 of the model.}
-\item{\code{adj.r.squared}}{the adjusted R^2 of the model.}
+\item{\code{r.squared}}{the \eqn{R^2} of the model.}
+\item{\code{adj.r.squared}}{the adjusted \eqn{R^2} of the model.}
 \item{\code{fstatistic}}{the F-statistic of the model and the associated degrees of freedom.}
 \item{\code{rdf}}{the explicit value of the degrees of freedom of the model.}
 }
