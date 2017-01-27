@@ -1,5 +1,5 @@
 ---
-# statutils v1.0
+# statutils v1.1
 
 **statutils** is a collection of utilities regarding both modelling, 
 data management and wrangling. Below is a list
@@ -13,6 +13,10 @@ Here you can find two functions:
 predictors according to a given significance threshold. 
 
 * `summary()`: the related method to print results out of `reduction()`.
+
+* `conf_int()`: method to compute confidence intervals when either a linear 
+model or a reduce model computed by `lm()` and `reduction()`, respectively, are 
+passed.
 
 ### General Utilities
 
