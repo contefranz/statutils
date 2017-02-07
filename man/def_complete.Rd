@@ -29,4 +29,3 @@ converts it to a \code{data.table} but still returns a \code{data.frame}.
 \author{
 Francesco Grossetti \email{francesco.grossetti@gmail.com}.
 }
-

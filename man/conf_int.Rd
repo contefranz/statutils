@@ -2,8 +2,10 @@
 % Please edit documentation in R/conf_int.R
 \name{conf_int}
 \alias{conf_int}
-\alias{conf_int.list}
 \alias{conf_int.lm}
+\alias{conf_int}
+\alias{conf_int.list}
+\alias{conf_int}
 \title{Confidence intervals for model covariates}
 \usage{
 conf_int(model, ...)
@@ -45,11 +47,10 @@ conf_int( model )
 # specify for which covariate a confidence intervals must be computed
 conf_int( model, "wt" )
 }
-\author{
-Francesco Grossetti \email{francesco.grossetti@gmail.com}.
-}
 \seealso{
 \code{\link[stats]{lm}} \code{\link[statutils]{reduction}} 
 \code{\link[stats]{confint}}
 }
-
+\author{
+Francesco Grossetti \email{francesco.grossetti@gmail.com}.
+}

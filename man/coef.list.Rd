@@ -12,4 +12,3 @@
 \description{
 Extract Model Coefficients
 }
-

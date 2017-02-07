@@ -74,6 +74,7 @@ conf_int.lm = function( model, covariates, level = 0.95 ) {
 
 #' @rdname conf_int
 #' @aliases conf_int
+#' @export
 
 conf_int.list = function( model, covariates, level = 0.95 ) {
   
@@ -109,21 +110,5 @@ conf_int.list = function( model, covariates, level = 0.95 ) {
 
 #' @rdname conf_int
 #' @aliases conf_int
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#' @export
 

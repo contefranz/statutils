@@ -14,4 +14,3 @@ of the current available functions grouped by topic/usage:
 predictors according to a given significance threshold.}
 }
 }
-

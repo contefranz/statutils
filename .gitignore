@@ -1,5 +1,6 @@
 # Temporary R files
 test_code.R
+R/old_code
 
 # Junk files
 .DS_Store

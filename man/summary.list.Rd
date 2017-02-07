@@ -36,10 +36,9 @@ reduced_model = reduction( complete_model, data = data_factors )
 summary( reduced_model )
 
 }
-\author{
-Francesco Grossetti \email{francesco.grossetti@gmail.com}.
-}
 \seealso{
 \code{\link[stats]{lm.fit}} \code{\link[stats]{lm}} \code{\link[stats]{step}}
 }
-
+\author{
+Francesco Grossetti \email{francesco.grossetti@gmail.com}.
+}

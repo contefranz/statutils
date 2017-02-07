@@ -35,25 +35,25 @@
 #'                      am + gear + carb + am:qsec, data = data_factor )
 #' summary( complete_model )
 #' 
-#' reduced_model = reduction( complete_model, data = data_factors )
+#' reduced_model = model_reduce( complete_model, data = data_factors )
 #' summary( reduced_model )
 #' 
 #' @seealso \code{\link[stats]{lm.fit}} \code{\link[stats]{lm}} \code{\link[stats]{step}}
 #' @author Francesco Grossetti \email{francesco.grossetti@@gmail.com}.
 #' @export
 
-reduction = function( model, ... ) {
-  UseMethod( "reduction", model )
+model_reduce = function( model, ... ) {
+  UseMethod( "model_reduce", model )
 }
 
-#' @rdname reduction
-#' @aliases reduction
+#' @rdname model_reduce
+#' @aliases model_reduce
 #' 
 #' @importFrom stats lm.fit
 #' 
 #' @export
 
-reduction.lm = function( model, data, alpha = 0.05, intercept = TRUE ) {
+model_reduce.lm = function( model, data, alpha = 0.05, intercept = TRUE ) {
   
   if ( !intercept ) {
     cat( "---\n" )
@@ -80,6 +80,8 @@ reduction.lm = function( model, data, alpha = 0.05, intercept = TRUE ) {
     X_red = X_red[ , !colnames( X_red ) %in% max_name ]
     fit = lm.fit( x = X_red, y = model$model[[ 1 ]] )
   }
+  
+  # z = fit
   mod_final = .final_fit( fit, alpha )
   return( mod_final )
 }
@@ -124,7 +126,7 @@ reduction.lm = function( model, data, alpha = 0.05, intercept = TRUE ) {
 
 
 .final_fit = function( obj, alpha ) {
-  
+
   digits = 5
   z = obj
   r = z$residuals
@@ -139,29 +141,29 @@ reduction.lm = function( model, data, alpha = 0.05, intercept = TRUE ) {
   p1 = 1L:p
   R = chol2inv( Qr$qr[ p1, p1, drop = FALSE ] )
   if( any( names( z$coefficients ) %in% "(Intercept)" ) ) {
-    mss = sum( ( f - mean( f ) )^2 ) 
+    mss = sum( ( f - mean( f ) )^2 )
     df.int = 1L
-  } else {
+  } else {m
     mss = sum( f^2 )
     df.int = 0L
   }
   r.squared = mss / ( mss + rss )
   adj.r.squared = 1 - ( 1 - r.squared ) * ( ( n - df.int ) / rdf )
-  fstatistic = c( value = ( mss / ( p - df.int ) ) / resvar, 
-                  numdf = p - df.int, 
+  fstatistic = c( value = ( mss / ( p - df.int ) ) / resvar,
+                  numdf = p - df.int,
                   dendf = rdf )
   se = sqrt( diag( R ) * resvar )
   est = z$coefficients[ Qr$pivot[ p1 ] ]
   tval = est/se
   pval = 2 * pt( abs( tval ), rdf, lower.tail = FALSE )
-  lm.results = matrix( 0, nrow = z$rank, ncol = 4, byrow = TRUE ) 
+  lm.results = matrix( 0, nrow = z$rank, ncol = 4, byrow = TRUE )
   lm.results = cbind( est, se, tval, pval )
-  colnames( lm.results ) = c( "Estimate", "Std. Error", "t value", "Pr(>|t|)" ) 
-  
-  return( invisible( list( coef = lm.results, residuals = r, 
-                           fitted.values = f, sigma = sigma, 
-                           r.squared = r.squared, 
-                           adj.r.squared = adj.r.squared, 
+  colnames( lm.results ) = c( "Estimate", "Std. Error", "t value", "Pr(>|t|)" )
+
+  return( invisible( list( coef = lm.results, residuals = r,
+                           fitted.values = f, sigma = sigma,
+                           r.squared = r.squared,
+                           adj.r.squared = adj.r.squared,
                            fstatistic = fstatistic,
                            rdf = rdf ) ) )
 }

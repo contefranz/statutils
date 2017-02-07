@@ -21,4 +21,3 @@ The function returns the sum of missing data detected in each column.
 \author{
 Francesco Grossetti \email{francesco.grossetti@gmail.com}.
 }
-
