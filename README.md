@@ -1,5 +1,4 @@
 ---
-# statutils v1.1
 
 **statutils** is a collection of utilities regarding both modelling, 
 data management and wrangling. Below is a list
@@ -9,14 +8,8 @@ of the current available functions grouped by topic/usage.
 
 Here you can find two functions: 
 
-* `reduction()`: a procedure to iteratively reduce a linear model by selecting 
+* `reduce_model()`: a procedure to iteratively reduce a linear model by selecting 
 predictors according to a given significance threshold. 
-
-* `summary()`: the related method to print results out of `reduction()`.
-
-* `conf_int()`: method to compute confidence intervals when either a linear 
-model or a reduce model computed by `lm()` and `reduction()`, respectively, are 
-passed.
 
 ### General Utilities
 
